@@ -1,7 +1,4 @@
-"""
-Main Experiment Script - Replicates Figure 4.1 from Sutton & Barto
-Runs all control algorithms on Windy Gridworld and generates comprehensive results
-"""
+
 
 import numpy as np
 import matplotlib.pyplot as plt

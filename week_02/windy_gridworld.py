@@ -1,7 +1,4 @@
-"""
-Windy Gridworld Environment
-Based on Sutton & Barto Chapter 6.5
-"""
+
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,12 +6,7 @@ from typing import Tuple, List, Optional
 import random
 
 class WindyGridworld:
-    """
-    Windy Gridworld environment as described in Sutton & Barto.
-    
-    The grid is 7x10 with wind effects in columns 3-9.
-    Wind strength: [0, 0, 0, 1, 1, 1, 2, 2, 1, 0]
-    """
+
     
     def __init__(self, height: int = 7, width: int = 10):
         self.height = height

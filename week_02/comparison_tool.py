@@ -1,7 +1,3 @@
-"""
-Comprehensive Comparison Tool for All Control Algorithms
-Replicates Figure 4.1 from Sutton & Barto
-"""
 
 import numpy as np
 import matplotlib.pyplot as plt

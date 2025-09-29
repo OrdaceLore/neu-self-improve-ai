@@ -1,7 +1,4 @@
-"""
-Dynamic Programming Control for Windy Gridworld
-Based on Sutton & Barto Chapter 4
-"""
+
 
 import numpy as np
 from windy_gridworld import WindyGridworld

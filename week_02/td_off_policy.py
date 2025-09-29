@@ -1,7 +1,4 @@
-"""
-TD(0) Off-Policy Control for Windy Gridworld
-Based on Sutton & Barto Chapter 7.5
-"""
+
 
 import numpy as np
 from windy_gridworld import WindyGridworld, EpsilonGreedyPolicy, RandomPolicy
