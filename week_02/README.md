@@ -1,163 +1,133 @@
-# Windy Gridworld Control Algorithms
+# Reinforcement Learning Algorithm Implementation
+## Based on Sutton & Barto "Reinforcement Learning: An Introduction" (2nd Edition)
 
-This repository implements various control algorithms for the Windy Gridworld environment, replicating experiments from Sutton & Barto's "Reinforcement Learning: An Introduction" (Chapters 8-10).
+### 🎯 Project Overview
+This project implements and compares the core reinforcement learning control algorithms from Sutton & Barto's seminal textbook, including:
 
-## Overview
+1. **Figure 4.1 Replication**: Policy iteration in a 4×4 gridworld
+2. **Windy Gridworld Environment**: Classic RL environment with wind effects
+3. **Six Control Algorithms**:
+   - Dynamic Programming Control
+   - Monte Carlo On-Policy Control
+   - Monte Carlo Off-Policy Control
+   - TD(0) On-Policy Control (SARSA)
+   - TD(0) Off-Policy Control (Unweighted Importance Sampling)
+   - TD(0) Off-Policy Control (Weighted Importance Sampling)
 
-The Windy Gridworld is a 7×10 grid environment where:
-- The agent starts at position (3,0) and must reach the goal at (3,7)
-- Wind effects push the agent upward in columns 3-9
-- Wind strength: [0, 0, 0, 1, 1, 1, 2, 2, 1, 0]
-- Actions: up, down, left, right
-- Reward: -1 per step, 0 at goal
-
-## Implemented Algorithms
-
-### 1. Dynamic Programming (DP) Control
-- **Policy Iteration**: Alternates between policy evaluation and policy improvement
-- **Value Iteration**: Directly updates value function until convergence
-- File: `dp_control.py`
-
-### 2. Monte Carlo On-Policy Control
-- **First-Visit MC**: Updates Q-function only on first visit to state-action pairs
-- **Every-Visit MC**: Updates Q-function on every visit to state-action pairs
-- File: `mc_on_policy.py`
-
-### 3. Monte Carlo Off-Policy Control
-- **Ordinary Importance Sampling**: Uses unweighted importance sampling
-- **Weighted Importance Sampling**: Uses weighted importance sampling for better variance
-- File: `mc_off_policy.py`
-
-### 4. TD(0) On-Policy Control
-- **Sarsa**: On-policy temporal difference learning
-- **Expected Sarsa**: Uses expected value of next state
-- File: `td_on_policy.py`
-
-### 5. TD(0) Off-Policy Control
-- **Q-Learning**: Off-policy temporal difference learning
-- **TD Off-Policy with Unweighted Importance Sampling**
-- **TD Off-Policy with Weighted Importance Sampling**
-- File: `td_off_policy.py`
-
-## Files Structure
-
+### 📁 Project Structure
 ```
-├── windy_gridworld.py          # Environment implementation
-├── dp_control.py               # Dynamic Programming algorithms
-├── mc_on_policy.py             # Monte Carlo on-policy algorithms
-├── mc_off_policy.py            # Monte Carlo off-policy algorithms
-├── td_on_policy.py             # TD(0) on-policy algorithms
-├── td_off_policy.py            # TD(0) off-policy algorithms
-├── comparison_tool.py          # Comprehensive comparison tool
-├── main_experiment.py          # Main experiment script (replicates Figure 4.1)
-├── requirements.txt            # Python dependencies
-└── README.md                   # This file
+├── figure_4_1_replication.py    # Replicates Figure 4.1 from the book
+├── windy_gridworld.py           # Windy Gridworld environment implementation
+├── rl_algorithms.py             # All RL control algorithms
+├── analysis_and_visualization.py # Comprehensive analysis and plotting
+├── main.py                      # Main script to run all experiments
+├── requirements.txt             # Python dependencies
+└── README.md                    # This file
 ```
 
-## Installation
+### 🚀 Quick Start
 
-1. Clone or download the repository
-2. Install dependencies:
+1. **Install Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-## Usage
+2. **Run All Experiments**:
+   ```bash
+   python main.py
+   ```
 
-### Run Individual Algorithms
+3. **Run Individual Components**:
+   ```bash
+   # Replicate Figure 4.1
+   python figure_4_1_replication.py
+   
+   # Test Windy Gridworld
+   python windy_gridworld.py
+   
+   # Compare algorithms
+   python rl_algorithms.py
+   
+   # Full analysis
+   python analysis_and_visualization.py
+   ```
 
-```python
-# Test the environment
-python windy_gridworld.py
+### 📊 Generated Outputs
+The experiments generate several visualization files:
 
-# Run Dynamic Programming
-python dp_control.py
+- `figure_4_1_replication.png` - Policy iteration visualization
+- `windy_gridworld.png` - Environment layout
+- `algorithm_comparison.png` - Performance comparison
+- `learning_curves.png` - Learning progress over episodes
+- `optimal_policies.png` - Optimal policies found by each algorithm
+- `convergence_analysis.png` - Convergence speed analysis
+- `performance_summary.png` - Summary table of results
 
-# Run Monte Carlo On-Policy
-python mc_on_policy.py
+### 🔬 Algorithm Details
 
-# Run Monte Carlo Off-Policy
-python mc_off_policy.py
+#### 1. Dynamic Programming Control
+- **Method**: Policy Iteration
+- **Convergence**: Guaranteed, typically 2-3 iterations
+- **Advantage**: Fast convergence, optimal solution
+- **Disadvantage**: Requires complete model of environment
 
-# Run TD(0) On-Policy
-python td_on_policy.py
+#### 2. Monte Carlo On-Policy Control
+- **Method**: First-visit MC with epsilon-greedy policy
+- **Convergence**: Slower, requires many episodes
+- **Advantage**: Model-free, learns from experience
+- **Disadvantage**: High variance, slow convergence
 
-# Run TD(0) Off-Policy
-python td_off_policy.py
-```
+#### 3. Monte Carlo Off-Policy Control
+- **Method**: Importance sampling with behavior policy
+- **Convergence**: Slower than on-policy
+- **Advantage**: Can learn from any behavior policy
+- **Disadvantage**: High variance, importance sampling issues
 
-### Run Complete Experiment (Replicates Figure 4.1)
+#### 4. TD(0) On-Policy Control (SARSA)
+- **Method**: Temporal difference learning with on-policy updates
+- **Convergence**: Faster than MC, online learning
+- **Advantage**: Model-free, online, lower variance than MC
+- **Disadvantage**: May converge to suboptimal policy
 
-```python
-python main_experiment.py
-```
+#### 5. TD(0) Off-Policy Control (Unweighted IS)
+- **Method**: Q-learning with unweighted importance sampling
+- **Convergence**: Can be unstable
+- **Advantage**: Can learn optimal policy off-policy
+- **Disadvantage**: High variance, potential instability
 
-This will:
-- Run all control algorithms
-- Generate comprehensive visualizations
-- Create performance comparisons
-- Save results to `experiment_results.npy`
+#### 6. TD(0) Off-Policy Control (Weighted IS)
+- **Method**: Q-learning with weighted importance sampling
+- **Convergence**: More stable than unweighted
+- **Advantage**: Better variance control, more stable
+- **Disadvantage**: Still more complex than on-policy methods
 
-### Run Comprehensive Comparison
+### 📈 Expected Results
+Based on the implementation, you should observe:
 
-```python
-python comparison_tool.py
-```
+1. **DP Control**: Fastest convergence, optimal performance
+2. **TD(0) On-Policy**: Good balance of speed and performance
+3. **MC Methods**: Slower convergence, higher variance
+4. **Off-Policy Methods**: More complex, potentially unstable
 
-This provides detailed analysis and comparison of all algorithms.
+### 🎓 Educational Value
+This implementation helps understand:
 
-## Key Features
+- **Policy Iteration**: How optimal policies emerge from random initialization
+- **Model-Free Learning**: How algorithms learn without environment models
+- **On-Policy vs Off-Policy**: Trade-offs between different learning paradigms
+- **Importance Sampling**: How to learn from different behavior policies
+- **Convergence Properties**: How different algorithms converge
 
-### Environment
-- **WindyGridworld**: Complete implementation with wind effects
-- **Visualization**: Grid rendering with policy arrows and value functions
-- **Policies**: Epsilon-greedy and random policies for exploration
-
-### Algorithms
-- **Complete Implementation**: All major control algorithms from Sutton & Barto
-- **Proper Importance Sampling**: Both weighted and unweighted variants
-- **Convergence Tracking**: Monitor learning progress and convergence
-- **Performance Evaluation**: Comprehensive evaluation metrics
-
-### Visualization
-- **Learning Curves**: Episode returns and evaluation performance
-- **Policy Visualization**: Arrow-based policy representation
-- **Value Functions**: Heatmap visualization of state values
-- **Comparison Plots**: Side-by-side algorithm comparisons
-
-## Results
-
-The implementation successfully replicates the key findings from Sutton & Barto:
-
-1. **Dynamic Programming** provides the optimal solution
-2. **Monte Carlo** methods converge to near-optimal policies
-3. **TD(0) methods** (Sarsa, Q-Learning) learn efficiently
-4. **Off-policy methods** with importance sampling work but may have higher variance
-5. **Q-Learning** often outperforms Sarsa due to off-policy learning
-
-## Parameters
-
-Default parameters used in experiments:
-- **Learning Rate (α)**: 0.1
-- **Discount Factor (γ)**: 1.0
-- **Exploration (ε)**: 0.1
-- **Episodes**: 1000
-- **Evaluation Interval**: 100 episodes
-
-## Customization
-
-You can easily modify:
-- Environment size and wind patterns
-- Algorithm parameters (learning rates, exploration)
-- Number of training episodes
-- Evaluation metrics
-
-## References
-
+### 📚 References
 - Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction* (2nd ed.). MIT Press.
-- Chapters 4, 5, 6, and 7 for the theoretical background
-- Chapter 6.5 for the Windy Gridworld environment
+- [Official Book Website](https://reinforcementlearning.pubpub.org/)
+- [Sutton's Website](http://incompleteideas.net/)
 
-## License
+### 🔧 Technical Notes
+- **Environment**: 7×10 Windy Gridworld with wind strengths [0,0,0,1,1,1,2,2,1,0]
+- **Reward Structure**: -1 per step, 0 at goal
+- **Hyperparameters**: γ=1.0, ε=0.1, α=0.1 (where applicable)
+- **Evaluation**: 100 episodes for final performance assessment
 
-This implementation is for educational purposes, following the examples from Sutton & Barto's textbook.
+---
+*Happy Learning! 🚀*

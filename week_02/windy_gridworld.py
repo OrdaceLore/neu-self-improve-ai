@@ -1,259 +1,186 @@
-
+"""
+Windy Gridworld Environment
+Based on Example 6.5 from Sutton & Barto
+"""
 
 import numpy as np
 import matplotlib.pyplot as plt
-from typing import Tuple, List, Optional
-import random
+import matplotlib.patches as patches
+from matplotlib.patches import FancyArrowPatch
 
 class WindyGridworld:
-
-    
-    def __init__(self, height: int = 7, width: int = 10):
+    def __init__(self, height=7, width=10, wind_strength=None):
+        """
+        Initialize Windy Gridworld
+        
+        Args:
+            height: Grid height (default 7)
+            width: Grid width (default 10) 
+            wind_strength: List of wind strength for each column (default from book)
+        """
         self.height = height
         self.width = width
         
-        # Wind strength for each column (0-indexed)
-        self.wind = [0, 0, 0, 1, 1, 1, 2, 2, 1, 0]
-        
-        # Actions: up, down, left, right
-        self.actions = [(0, 1), (0, -1), (-1, 0), (1, 0)]  # (row, col)
-        self.action_names = ['up', 'down', 'left', 'right']
+        # Default wind strength from Sutton & Barto Example 6.5
+        if wind_strength is None:
+            self.wind_strength = [0, 0, 0, 1, 1, 1, 2, 2, 1, 0]
+        else:
+            self.wind_strength = wind_strength
         
         # Start and goal positions
-        self.start = (3, 0)  # (row, col)
-        self.goal = (3, 7)   # (row, col)
+        self.start = (3, 0)  # Row 3, Column 0
+        self.goal = (3, 7)   # Row 3, Column 7
         
-        # Current state
-        self.current_state = self.start
+        # Actions: up, down, left, right
+        self.actions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        self.action_names = ['↑', '↓', '←', '→']
         
-        # Episode tracking
-        self.episode_steps = 0
-        self.max_episode_steps = 1000
+        # State space
+        self.states = [(i, j) for i in range(height) for j in range(width)]
         
-    def reset(self) -> Tuple[int, int]:
-        """Reset the environment to start state."""
-        self.current_state = self.start
-        self.episode_steps = 0
-        return self.current_state
-    
-    def step(self, action: int) -> Tuple[Tuple[int, int], float, bool, dict]:
-        """
-        Take a step in the environment.
-        
-        Args:
-            action: Action index (0=up, 1=down, 2=left, 3=right)
-            
-        Returns:
-            (next_state, reward, done, info)
-        """
-        if self.episode_steps >= self.max_episode_steps:
-            return self.current_state, 0, True, {'timeout': True}
-        
-        row, col = self.current_state
-        action_delta = self.actions[action]
-        
-        # Apply action
-        new_row = row + action_delta[0]
-        new_col = col + action_delta[1]
-        
-        # Apply wind effect
-        wind_strength = self.wind[col]
-        new_row -= wind_strength
-        
-        # Keep within bounds
-        new_row = max(0, min(self.height - 1, new_row))
-        new_col = max(0, min(self.width - 1, new_col))
-        
-        self.current_state = (new_row, new_col)
-        self.episode_steps += 1
-        
-        # Check if goal reached
-        done = (self.current_state == self.goal)
-        reward = -1 if not done else 0  # -1 for each step, 0 at goal
-        
-        info = {
-            'wind_applied': wind_strength,
-            'action_taken': self.action_names[action]
-        }
-        
-        return self.current_state, reward, done, info
-    
-    def get_state_index(self, state: Tuple[int, int]) -> int:
-        """Convert (row, col) state to linear index."""
-        row, col = state
-        return row * self.width + col
-    
-    def get_state_from_index(self, index: int) -> Tuple[int, int]:
-        """Convert linear index to (row, col) state."""
-        row = index // self.width
-        col = index % self.width
-        return (row, col)
-    
-    def get_num_states(self) -> int:
-        """Get total number of states."""
-        return self.height * self.width
-    
-    def get_num_actions(self) -> int:
-        """Get total number of actions."""
-        return len(self.actions)
-    
-    def is_terminal(self, state: Tuple[int, int]) -> bool:
-        """Check if state is terminal (goal)."""
+    def is_terminal(self, state):
+        """Check if state is terminal (goal)"""
         return state == self.goal
     
-    def render(self, policy: Optional[np.ndarray] = None, values: Optional[np.ndarray] = None):
+    def get_next_state(self, state, action):
         """
-        Render the gridworld with optional policy and value function.
+        Get next state given current state and action
+        Includes wind effect
+        """
+        if self.is_terminal(state):
+            return state
+        
+        # Apply action
+        next_row = state[0] + action[0]
+        next_col = state[1] + action[1]
+        
+        # Apply wind
+        wind_effect = self.wind_strength[state[1]]
+        next_row -= wind_effect
+        
+        # Check bounds and clip
+        next_row = max(0, min(self.height - 1, next_row))
+        next_col = max(0, min(self.width - 1, next_col))
+        
+        return (next_row, next_col)
+    
+    def get_reward(self, state, action, next_state):
+        """Get reward for transition"""
+        if next_state == self.goal:
+            return 0  # Goal reward
+        else:
+            return -1  # Step cost
+    
+    def reset(self):
+        """Reset environment to start state"""
+        return self.start
+    
+    def step(self, action):
+        """
+        Take a step in the environment
         
         Args:
-            policy: Policy array of shape (num_states, num_actions)
-            values: Value function array of shape (num_states,)
+            action: Action index (0-3)
+            
+        Returns:
+            next_state, reward, done, info
         """
+        if isinstance(action, int):
+            action = self.actions[action]
+        
+        next_state = self.get_next_state(self.start, action)
+        reward = self.get_reward(self.start, action, next_state)
+        done = self.is_terminal(next_state)
+        
+        # Update current state
+        self.start = next_state
+        
+        return next_state, reward, done, {}
+    
+    def visualize(self, path=None, title="Windy Gridworld"):
+        """Visualize the gridworld with optional path"""
         fig, ax = plt.subplots(figsize=(12, 8))
         
-        # Create grid
-        grid = np.zeros((self.height, self.width))
+        # Draw grid
+        for i in range(self.height + 1):
+            ax.axhline(i-0.5, color='black', linewidth=0.5)
+        for j in range(self.width + 1):
+            ax.axvline(j-0.5, color='black', linewidth=0.5)
+        
+        # Color cells based on wind strength
+        for j in range(self.width):
+            wind = self.wind_strength[j]
+            color_intensity = wind / max(self.wind_strength) if max(self.wind_strength) > 0 else 0
+            for i in range(self.height):
+                rect = patches.Rectangle((j-0.5, i-0.5), 1, 1, 
+                                       facecolor=plt.cm.Blues(color_intensity * 0.3),
+                                       edgecolor='black', linewidth=0.5)
+                ax.add_patch(rect)
         
         # Mark start and goal
-        grid[self.start] = 1
-        grid[self.goal] = 2
+        start_rect = patches.Rectangle((self.start[1]-0.4, self.start[0]-0.4), 0.8, 0.8,
+                                     facecolor='green', edgecolor='black', linewidth=2)
+        ax.add_patch(start_rect)
+        ax.text(self.start[1], self.start[0], 'S', ha='center', va='center', 
+                fontsize=16, fontweight='bold', color='white')
         
-        # Show wind strength
-        wind_display = np.array(self.wind).reshape(1, -1)
+        goal_rect = patches.Rectangle((self.goal[1]-0.4, self.goal[0]-0.4), 0.8, 0.8,
+                                    facecolor='red', edgecolor='black', linewidth=2)
+        ax.add_patch(goal_rect)
+        ax.text(self.goal[1], self.goal[0], 'G', ha='center', va='center',
+                fontsize=16, fontweight='bold', color='white')
         
-        # Create subplot layout
-        gs = fig.add_gridspec(2, 2, height_ratios=[3, 1], width_ratios=[1, 1])
-        ax_main = fig.add_subplot(gs[0, :])
-        ax_wind = fig.add_subplot(gs[1, 0])
-        ax_legend = fig.add_subplot(gs[1, 1])
+        # Draw path if provided
+        if path:
+            for i in range(len(path) - 1):
+                start_pos = (path[i][1], path[i][0])
+                end_pos = (path[i+1][1], path[i+1][0])
+                arrow = FancyArrowPatch(start_pos, end_pos,
+                                      arrowstyle='->', mutation_scale=20,
+                                      color='orange', linewidth=3)
+                ax.add_patch(arrow)
         
-        # Main grid
-        im = ax_main.imshow(grid, cmap='viridis', aspect='equal')
-        ax_main.set_title('Windy Gridworld')
-        ax_main.set_xlabel('Column')
-        ax_main.set_ylabel('Row')
+        # Add wind strength labels
+        for j in range(self.width):
+            ax.text(j, -0.3, f'W={self.wind_strength[j]}', ha='center', va='center',
+                   fontsize=10, fontweight='bold')
         
-        # Add wind information
-        wind_colors = ['white', 'lightblue', 'blue']
-        for col in range(self.width):
-            wind_strength = self.wind[col]
-            if wind_strength > 0:
-                for row in range(self.height):
-                    rect = plt.Rectangle((col-0.4, row-0.4), 0.8, 0.8, 
-                                       facecolor=wind_colors[wind_strength], 
-                                       alpha=0.3, edgecolor='black')
-                    ax_main.add_patch(rect)
-        
-        # Add start and goal labels
-        ax_main.text(self.start[1], self.start[0], 'S', ha='center', va='center', 
-                    fontsize=16, fontweight='bold', color='white')
-        ax_main.text(self.goal[1], self.goal[0], 'G', ha='center', va='center', 
-                    fontsize=16, fontweight='bold', color='white')
-        
-        # Add policy arrows if provided
-        if policy is not None:
-            arrow_map = {0: '↑', 1: '↓', 2: '←', 3: '→'}
-            for state_idx in range(self.get_num_states()):
-                if not self.is_terminal(self.get_state_from_index(state_idx)):
-                    row, col = self.get_state_from_index(state_idx)
-                    best_action = np.argmax(policy[state_idx])
-                    ax_main.text(col, row, arrow_map[best_action], ha='center', va='center',
-                               fontsize=12, fontweight='bold')
-        
-        # Wind strength bar
-        wind_display = np.array(self.wind).reshape(1, -1)
-        ax_wind.imshow(wind_display, cmap='Blues', aspect='auto')
-        ax_wind.set_title('Wind Strength')
-        ax_wind.set_xlabel('Column')
-        ax_wind.set_xticks(range(self.width))
-        ax_wind.set_yticks([])
-        
-        # Add wind strength values
-        for col in range(self.width):
-            ax_wind.text(col, 0, str(self.wind[col]), ha='center', va='center',
-                        fontweight='bold', color='white' if self.wind[col] > 1 else 'black')
-        
-        # Legend
-        ax_legend.axis('off')
-        legend_text = "Legend:\n"
-        legend_text += "S = Start\n"
-        legend_text += "G = Goal\n"
-        legend_text += "↑↓←→ = Policy\n"
-        legend_text += "Blue = Wind"
-        ax_legend.text(0.1, 0.5, legend_text, fontsize=12, va='center')
+        ax.set_xlim(-0.5, self.width - 0.5)
+        ax.set_ylim(-0.5, self.height - 0.5)
+        ax.set_xticks(range(self.width))
+        ax.set_yticks(range(self.height))
+        ax.set_xlabel('Column')
+        ax.set_ylabel('Row')
+        ax.set_title(title)
+        ax.invert_yaxis()
         
         plt.tight_layout()
-        plt.show()
-        
-        # Print value function if provided
-        if values is not None:
-            print("\nValue Function:")
-            value_grid = values.reshape(self.height, self.width)
-            for row in range(self.height):
-                print(" ".join([f"{value_grid[row, col]:6.2f}" for col in range(self.width)]))
+        return fig, ax
 
-
-class EpsilonGreedyPolicy:
-    """Epsilon-greedy policy for exploration."""
+def test_windy_gridworld():
+    """Test the Windy Gridworld environment"""
+    print("Testing Windy Gridworld Environment")
     
-    def __init__(self, num_actions: int, epsilon: float = 0.1):
-        self.num_actions = num_actions
-        self.epsilon = epsilon
+    env = WindyGridworld()
+    print(f"Grid size: {env.height} x {env.width}")
+    print(f"Start: {env.start}")
+    print(f"Goal: {env.goal}")
+    print(f"Wind strength: {env.wind_strength}")
     
-    def select_action(self, q_values: np.ndarray, state: int) -> int:
-        """Select action using epsilon-greedy policy."""
-        if random.random() < self.epsilon:
-            return random.randint(0, self.num_actions - 1)
-        else:
-            return np.argmax(q_values[state])
+    # Test some transitions
+    print("\nTesting transitions:")
+    test_state = (3, 3)  # Middle of grid
+    for i, action in enumerate(env.actions):
+        next_state = env.get_next_state(test_state, action)
+        reward = env.get_reward(test_state, action, next_state)
+        print(f"Action {env.action_names[i]}: {test_state} -> {next_state}, reward: {reward}")
     
-    def get_probability(self, q_values: np.ndarray, state: int, action: int) -> float:
-        """Get action probability under epsilon-greedy policy."""
-        best_action = np.argmax(q_values[state])
-        if action == best_action:
-            return 1.0 - self.epsilon + self.epsilon / self.num_actions
-        else:
-            return self.epsilon / self.num_actions
-
-
-class RandomPolicy:
-    """Random policy for behavior in off-policy methods."""
+    # Visualize
+    fig, ax = env.visualize()
+    plt.savefig('windy_gridworld.png', dpi=300, bbox_inches='tight')
+    plt.show()
     
-    def __init__(self, num_actions: int):
-        self.num_actions = num_actions
-    
-    def select_action(self, q_values: np.ndarray, state: int) -> int:
-        """Select random action."""
-        return random.randint(0, self.num_actions - 1)
-    
-    def get_probability(self, q_values: np.ndarray, state: int, action: int) -> float:
-        """Get action probability under random policy."""
-        return 1.0 / self.num_actions
-
+    return env
 
 if __name__ == "__main__":
-    # Test the environment
-    env = WindyGridworld()
-    
-    print("Testing Windy Gridworld Environment")
-    print(f"Grid size: {env.height}x{env.width}")
-    print(f"Start: {env.start}, Goal: {env.goal}")
-    print(f"Wind: {env.wind}")
-    print(f"Number of states: {env.get_num_states()}")
-    print(f"Number of actions: {env.get_num_actions()}")
-    
-    # Test a few steps
-    state = env.reset()
-    print(f"\nInitial state: {state}")
-    
-    for step in range(5):
-        action = random.randint(0, 3)
-        next_state, reward, done, info = env.step(action)
-        print(f"Step {step+1}: Action {env.action_names[action]}, "
-              f"State {next_state}, Reward {reward}, Done {done}")
-        if done:
-            break
-        state = next_state
-    
-    # Render the environment
-    env.render()
+    env = test_windy_gridworld()
