@@ -1,67 +1,133 @@
-## MCTS-UCT Minimal Project
+# Reinforcement Learning Algorithm Implementation
+## Based on Sutton & Barto "Reinforcement Learning: An Introduction" (2nd Edition)
 
-This project provides a clean, reusable implementation of Monte Carlo Tree Search with the UCT rule, a generic two-player zero-sum game interface, and a Tic-Tac-Toe demo with a simple CLI.
+### 🎯 Project Overview
+This project implements and compares the core reinforcement learning control algorithms from Sutton & Barto's seminal textbook, including:
 
-### Install
+1. **Figure 4.1 Replication**: Policy iteration in a 4×4 gridworld
+2. **Windy Gridworld Environment**: Classic RL environment with wind effects
+3. **Six Control Algorithms**:
+   - Dynamic Programming Control
+   - Monte Carlo On-Policy Control
+   - Monte Carlo Off-Policy Control
+   - TD(0) On-Policy Control (SARSA)
+   - TD(0) Off-Policy Control (Unweighted Importance Sampling)
+   - TD(0) Off-Policy Control (Weighted Importance Sampling)
 
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+### 📁 Project Structure
+```
+├── figure_4_1_replication.py    # Replicates Figure 4.1 from the book
+├── windy_gridworld.py           # Windy Gridworld environment implementation
+├── rl_algorithms.py             # All RL control algorithms
+├── analysis_and_visualization.py # Comprehensive analysis and plotting
+├── main.py                      # Main script to run all experiments
+├── requirements.txt             # Python dependencies
+└── README.md                    # This file
 ```
 
-### Run Tic-Tac-Toe demo
+### 🚀 Quick Start
 
-```bash
-python -m mcts.cli --simulations 200 --cpuct 1.414
-```
+1. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-- Human plays `X` (player +1) by default; the agent plays `O` (player -1).
-- Use moves as `row col` with zero-based indexing.
+2. **Run All Experiments**:
+   ```bash
+   python main.py
+   ```
 
-### Library overview
+3. **Run Individual Components**:
+   ```bash
+   # Replicate Figure 4.1
+   python figure_4_1_replication.py
+   
+   # Test Windy Gridworld
+   python windy_gridworld.py
+   
+   # Compare algorithms
+   python rl_algorithms.py
+   
+   # Full analysis
+   python analysis_and_visualization.py
+   ```
 
-- `mcts/game.py`: Abstract `GameState` and helpers for two-player zero-sum turn-based games.
-- `mcts/mcts.py`: MCTS-UCT implementation with pluggable rollout policy.
-- `mcts/tictactoe.py`: Tic-Tac-Toe environment implementing `GameState`.
-- `mcts/cli.py`: Simple CLI to play against the MCTS agent.
+### 📊 Generated Outputs
+The experiments generate several visualization files:
 
-### API sketch
+- `figure_4_1_replication.png` - Policy iteration visualization
+- `windy_gridworld.png` - Environment layout
+- `algorithm_comparison.png` - Performance comparison
+- `learning_curves.png` - Learning progress over episodes
+- `optimal_policies.png` - Optimal policies found by each algorithm
+- `convergence_analysis.png` - Convergence speed analysis
+- `performance_summary.png` - Summary table of results
 
-```python
-from mcts.mcts import MCTS
-from mcts.tictactoe import TicTacToe
+### 🔬 Algorithm Details
 
-state = TicTacToe.initial()
-agent = MCTS(num_simulations=800, cpuct=1.414)
-action = agent.best_action(state)
-```
+#### 1. Dynamic Programming Control
+- **Method**: Policy Iteration
+- **Convergence**: Guaranteed, typically 2-3 iterations
+- **Advantage**: Fast convergence, optimal solution
+- **Disadvantage**: Requires complete model of environment
 
-- `MCTS.best_action(state)`: Runs the configured number of simulations from `state` and returns an action.
-- `MCTS.search(state)`: Returns a dictionary of action -> visit count and estimated value.
+#### 2. Monte Carlo On-Policy Control
+- **Method**: First-visit MC with epsilon-greedy policy
+- **Convergence**: Slower, requires many episodes
+- **Advantage**: Model-free, learns from experience
+- **Disadvantage**: High variance, slow convergence
 
-### Extending to other games
+#### 3. Monte Carlo Off-Policy Control
+- **Method**: Importance sampling with behavior policy
+- **Convergence**: Slower than on-policy
+- **Advantage**: Can learn from any behavior policy
+- **Disadvantage**: High variance, importance sampling issues
 
-Implement `GameState` with:
-- `get_current_player() -> int` in {+1, -1}
-- `get_legal_actions() -> list[Any]`
-- `take_action(action) -> GameState`
-- `is_terminal() -> bool`
-- `get_reward(player: int) -> float` in {-1.0, 0.0, +1.0}
+#### 4. TD(0) On-Policy Control (SARSA)
+- **Method**: Temporal difference learning with on-policy updates
+- **Convergence**: Faster than MC, online learning
+- **Advantage**: Model-free, online, lower variance than MC
+- **Disadvantage**: May converge to suboptimal policy
 
-### Notes
+#### 5. TD(0) Off-Policy Control (Unweighted IS)
+- **Method**: Q-learning with unweighted importance sampling
+- **Convergence**: Can be unstable
+- **Advantage**: Can learn optimal policy off-policy
+- **Disadvantage**: High variance, potential instability
 
-- The implementation uses random rollouts by default. You can pass a custom `rollout_policy(state) -> action` to bias playouts.
-- This structure is a good starting point to integrate learned value/policy models (e.g., for MuZero-style planning or LLM-guided expansions).
+#### 6. TD(0) Off-Policy Control (Weighted IS)
+- **Method**: Q-learning with weighted importance sampling
+- **Convergence**: More stable than unweighted
+- **Advantage**: Better variance control, more stable
+- **Disadvantage**: Still more complex than on-policy methods
 
-### Suggested LLM+MCTS paper and plan
+### 📈 Expected Results
+Based on the implementation, you should observe:
 
-- Paper: "LLM-MCTS: An Empirical Study of Monte Carlo Tree Search for Large Language Model Reasoning" (2024). Link: `https://llm-mcts.github.io/static/pdfs/paper.pdf`
+1. **DP Control**: Fastest convergence, optimal performance
+2. **TD(0) On-Policy**: Good balance of speed and performance
+3. **MC Methods**: Slower convergence, higher variance
+4. **Off-Policy Methods**: More complex, potentially unstable
 
-Two options:
-- Replicate: Implement their self-consistency rollouts with MCTS over chain-of-thought reasoning traces; evaluate on GSM8K-style math problems. Measure accuracy vs. majority-vote baselines at equal token budget.
-- Apply to a realistic task: Use MCTS to plan multi-step actions for meeting scheduling emails. Nodes are partial email drafts and decisions (propose time, request info, confirm). Rollouts use an LLM to simulate recipient replies; terminal rewards score feasibility, clarity, and success. Compare to greedy CoT and beam search.
+### 🎓 Educational Value
+This implementation helps understand:
 
-Minimal path to start:
-- Implement a tree environment where actions are "next reasoning step" tokens or structured tool calls.
-- Use visit-count-based action selection (UCT) and LLM-evaluated value estimates at leafs.
-- Constrain token budget per simulation and total rollouts to compare fairly with baselines.
+- **Policy Iteration**: How optimal policies emerge from random initialization
+- **Model-Free Learning**: How algorithms learn without environment models
+- **On-Policy vs Off-Policy**: Trade-offs between different learning paradigms
+- **Importance Sampling**: How to learn from different behavior policies
+- **Convergence Properties**: How different algorithms converge
+
+### 📚 References
+- Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction* (2nd ed.). MIT Press.
+- [Official Book Website](https://reinforcementlearning.pubpub.org/)
+- [Sutton's Website](http://incompleteideas.net/)
+
+### 🔧 Technical Notes
+- **Environment**: 7×10 Windy Gridworld with wind strengths [0,0,0,1,1,1,2,2,1,0]
+- **Reward Structure**: -1 per step, 0 at goal
+- **Hyperparameters**: γ=1.0, ε=0.1, α=0.1 (where applicable)
+- **Evaluation**: 100 episodes for final performance assessment
+
+---
+*Happy Learning! 🚀*

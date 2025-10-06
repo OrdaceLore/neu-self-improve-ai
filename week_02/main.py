@@ -1,94 +1,122 @@
-"""
-Main script to run all RL algorithm experiments
-Replicates Figure 4.1 and implements all control algorithms on Windy Gridworld
-"""
-
-import sys
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Add current directory to path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# ----- Bandit Environment -----
+class Bandit:
+    def __init__(self, k=10):
+        self.k = k
+        self.q_true = np.random.normal(0, 1, k)  # true action values
 
-from figure_4_1_replication import main as run_figure_4_1
-from windy_gridworld import test_windy_gridworld
-from rl_algorithms import compare_algorithms
-from analysis_and_visualization import run_comprehensive_analysis
+    def step(self, action):
+        return np.random.normal(self.q_true[action], 1)
 
-def main():
-    """Run all experiments"""
-    print("Reinforcement Learning Algorithm Implementation")
-    print("=" * 60)
-    print("Based on Sutton & Barto 'Reinforcement Learning: An Introduction'")
-    print("=" * 60)
-    
-    # Set random seed for reproducibility
-    np.random.seed(42)
-    
-    try:
-        # 1. Replicate Figure 4.1
-        print("\n1. REPLICATING FIGURE 4.1: Policy Iteration in Gridworld")
-        print("-" * 50)
-        V_history, policy_history = run_figure_4_1()
-        print("✓ Figure 4.1 replication complete!")
-        
-        # 2. Test Windy Gridworld
-        print("\n2. TESTING WINDY GRIDWORLD ENVIRONMENT")
-        print("-" * 50)
-        env = test_windy_gridworld()
-        print("✓ Windy Gridworld environment tested!")
-        
-        # 3. Compare all algorithms
-        print("\n3. COMPARING ALL RL ALGORITHMS")
-        print("-" * 50)
-        results = compare_algorithms()
-        print("✓ Algorithm comparison complete!")
-        
-        # 4. Comprehensive analysis
-        print("\n4. COMPREHENSIVE ANALYSIS AND VISUALIZATION")
-        print("-" * 50)
-        analysis_results, convergence_data, summary_df = run_comprehensive_analysis()
-        print("✓ Comprehensive analysis complete!")
-        
-        # 5. Summary
-        print("\n" + "=" * 60)
-        print("EXPERIMENT SUMMARY")
-        print("=" * 60)
-        print("✓ Figure 4.1 Policy Iteration replicated")
-        print("✓ Windy Gridworld environment implemented")
-        print("✓ All 6 control algorithms implemented:")
-        print("  - DP Control (Policy Iteration)")
-        print("  - MC On-Policy Control")
-        print("  - MC Off-Policy Control")
-        print("  - TD(0) On-Policy Control (SARSA)")
-        print("  - TD(0) Off-Policy Control (Unweighted IS)")
-        print("  - TD(0) Off-Policy Control (Weighted IS)")
-        print("✓ Comprehensive analysis and visualizations generated")
-        
-        print("\nGenerated Files:")
-        print("- figure_4_1_replication.png")
-        print("- windy_gridworld.png")
-        print("- algorithm_comparison.png")
-        print("- learning_curves.png")
-        print("- optimal_policies.png")
-        print("- convergence_analysis.png")
-        print("- performance_summary.png")
-        
-        print("\n" + "=" * 60)
-        print("EXPERIMENT COMPLETE! 🎉")
-        print("=" * 60)
-        
-    except Exception as e:
-        print(f"\nError during execution: {e}")
-        print("Please check the error and try again.")
-        return False
-    
-    return True
+    def optimal_action(self):
+        return np.argmax(self.q_true)
 
+
+# ----- ε-greedy Agent -----
+class EGreedyAgent:
+    def __init__(self, k=10, eps=0.1):
+        self.k = k
+        self.eps = eps
+        self.q_est = np.zeros(k)
+        self.action_count = np.zeros(k)
+
+    def select_action(self):
+        if np.random.rand() < self.eps:
+            return np.random.randint(self.k)
+        return np.argmax(self.q_est)
+
+    def update(self, action, reward):
+        self.action_count[action] += 1
+        self.q_est[action] += (reward - self.q_est[action]) / self.action_count[action]
+
+
+# ----- Gradient Bandit Agent -----
+class GradientAgent:
+    def __init__(self, k=10, alpha=0.1, use_baseline=True):
+        self.k = k
+        self.alpha = alpha
+        self.use_baseline = use_baseline
+        self.H = np.zeros(k)   # preferences
+        self.pi = np.ones(k) / k
+        self.avg_reward = 0
+        self.time = 0
+
+    def select_action(self):
+        exp_H = np.exp(self.H - np.max(self.H))  # for stability
+        self.pi = exp_H / np.sum(exp_H)
+        return np.random.choice(self.k, p=self.pi)
+
+    def update(self, action, reward):
+        self.time += 1
+        baseline = self.avg_reward if self.use_baseline else 0
+        if self.use_baseline:
+            self.avg_reward += (reward - self.avg_reward) / self.time
+        one_hot = np.zeros(self.k)
+        one_hot[action] = 1
+        self.H += self.alpha * (reward - baseline) * (one_hot - self.pi)
+
+
+# ----- Experiment Runner -----
+def run(agent_class, agent_args, runs=800, steps=500, k=10):
+    rewards = np.zeros((runs, steps))
+    optimal = np.zeros((runs, steps))
+
+    for r in range(runs):
+        bandit = Bandit(k)
+        agent = agent_class(k, **agent_args)
+        for t in range(steps):
+            action = agent.select_action()
+            reward = bandit.step(action)
+            agent.update(action, reward)
+            rewards[r, t] = reward
+            if action == bandit.optimal_action():
+                optimal[r, t] = 1
+    return rewards.mean(axis=0), optimal.mean(axis=0)
+
+
+# ----- Main -----
 if __name__ == "__main__":
-    success = main()
-    if success:
-        print("\nAll experiments completed successfully!")
-    else:
-        print("\nExperiments failed. Please check the error messages above.")
+    runs, steps = 800, 500
+
+    # E-greedy settings
+    epsilons = [0, 0.01, 0.1]
+    eg_results = []
+    for eps in epsilons:
+        r, o = run(EGreedyAgent, {"eps": eps}, runs, steps)
+        eg_results.append((f"ε={eps}", r, o))
+
+    # Gradient bandit settings
+    grad_settings = [
+        (0.1, False), (0.4, False),
+        (0.1, True), (0.4, True)
+    ]
+    grad_results = []
+    for alpha, baseline in grad_settings:
+        r, o = run(GradientAgent, {"alpha": alpha, "use_baseline": baseline}, runs, steps)
+        name = f"Grad α={alpha}, {'baseline' if baseline else 'no baseline'}"
+        grad_results.append((name, r, o))
+
+    # ----- Plotting -----
+    plt.figure(figsize=(12, 5))
+
+    # Avg reward
+    plt.subplot(1, 2, 1)
+    for label, r, _ in eg_results + grad_results:
+        plt.plot(r, label=label)
+    plt.xlabel("Steps")
+    plt.ylabel("Average reward")
+    plt.legend()
+
+    # % optimal action
+    plt.subplot(1, 2, 2)
+    for label, _, o in eg_results + grad_results:
+        plt.plot(o * 100, label=label)
+    plt.xlabel("Steps")
+    plt.ylabel("% Optimal action")
+    plt.legend()
+
+plt.tight_layout()
+plt.savefig("bandit_results.png")
+print("Plot saved as bandit_results.png")
