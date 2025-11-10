@@ -8,9 +8,12 @@ def evaluate_webshop():
     """Evaluate on WebShop"""
     trainer = RAGENWeb(env_type='webshop')
     
-    # Quick training
-    for _ in range(3):
+    # Thorough training for evaluation
+    print("Training WebShop model...")
+    for i in range(50):
         trainer.train_step()
+        if (i + 1) % 10 == 0:
+            print(f"  Completed {i + 1}/50 training steps")
     
     # Evaluation
     avg_reward, success_rate = trainer.evaluate(n_episodes=20)
@@ -19,16 +22,19 @@ def evaluate_webshop():
         'task': 'WebShop',
         'avg_reward': avg_reward,
         'success_rate': success_rate,
-        'training_steps': 3
+        'training_steps': 50
     }
 
 def evaluate_webarena():
     """Evaluate on WebArena"""
     trainer = RAGENWeb(env_type='webarena')
     
-    # Quick training
-    for _ in range(3):
+    # Thorough training for evaluation
+    print("Training WebArena model...")
+    for i in range(50):
         trainer.train_step()
+        if (i + 1) % 10 == 0:
+            print(f"  Completed {i + 1}/50 training steps")
     
     # Evaluation
     avg_reward, success_rate = trainer.evaluate(n_episodes=20)
@@ -37,7 +43,7 @@ def evaluate_webarena():
         'task': 'WebArena',
         'avg_reward': avg_reward,
         'success_rate': success_rate,
-        'training_steps': 3
+        'training_steps': 50
     }
 
 def main():

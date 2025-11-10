@@ -96,9 +96,9 @@ def main():
     print("\n=== WebShop ===")
     trainer = RAGENWeb(env_type='webshop')
     print("Training...")
-    for i in range(5):
+    for i in range(50):
         loss, episode_reward = trainer.train_step()
-        if i % 1 == 0:
+        if i % 5 == 0:  # Print every 5 steps to reduce output
             eval_reward, success_rate = trainer.evaluate(n_episodes=5)
             print(f"Step {i}: Loss={loss:.4f}, Success Rate={success_rate:.2%}")
     
@@ -111,9 +111,9 @@ def main():
     print("\n=== WebArena ===")
     trainer = RAGENWeb(env_type='webarena')
     print("Training...")
-    for i in range(5):
+    for i in range(50):
         loss, episode_reward = trainer.train_step()
-        if i % 1 == 0:
+        if i % 5 == 0:  # Print every 5 steps to reduce output
             eval_reward, success_rate = trainer.evaluate(n_episodes=5)
             print(f"Step {i}: Loss={loss:.4f}, Success Rate={success_rate:.2%}")
     
@@ -128,7 +128,7 @@ def main():
     print(f"Our RAGEN - WebShop: {webshop_success:.2%} success rate")
     print(f"Our RAGEN - WebArena: {webarena_success:.2%} success rate")
     print("\nWhy RAGEN doesn't perform well:")
-    print("1. Limited training (5 steps vs 1000+ for leaderboard)")
+    print("1. Limited training (50 steps vs 1000+ for leaderboard)")
     print("2. Simplified environment (mock vs real web)")
     print("3. Small model (32 hidden vs larger models)")
     print("4. No pre-training or domain-specific features")

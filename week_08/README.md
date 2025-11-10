@@ -39,8 +39,8 @@ python evaluate.py
 
 | Task | Avg Reward | Success Rate | Training Steps |
 |------|------------|--------------|----------------|
-| WebShop | ~2-5 | ~20-40% | 5 |
-| WebArena | ~1-3 | ~15-30% | 5 |
+| WebShop | ~2-5 | ~20-40% | 50 |
+| WebArena | ~1-3 | ~15-30% | 50 |
 
 ### Comparison with Leaderboard
 
@@ -54,9 +54,9 @@ python evaluate.py
 ## Why RAGEN Doesn't Perform Well
 
 ### 1. Limited Training
-- Our implementation: 5 training steps
+- Our implementation: 50 training steps
 - Leaderboard methods: 1000+ training steps
-- **Impact**: Policy hasn't converged
+- **Impact**: Policy hasn't fully converged
 
 ### 2. Simplified Environment
 - Our implementation: Mock environments with simplified state/actions
@@ -126,7 +126,7 @@ python evaluate.py
 
 ## Recommendations for Improvement
 
-1. **Increase training**: 100-1000 steps instead of 5
+1. **Increase training**: 100-1000 steps for better convergence
 2. **Larger model**: 128+ hidden dimensions, more layers
 3. **Real environments**: Use actual WebShop/WebArena instead of mocks
 4. **Pre-training**: Train on web interaction data first
