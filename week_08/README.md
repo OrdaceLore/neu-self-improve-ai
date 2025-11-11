@@ -23,15 +23,12 @@ pip install torch
 
 ## Running
 
-### Main training and evaluation:
+### Training and evaluation:
 ```bash
 python ragen.py
 ```
 
-### Detailed evaluation:
-```bash
-python evaluate.py
-```
+This will train and evaluate both WebShop and WebArena, showing performance tables and leaderboard comparison.
 
 ## Experimental Results
 
@@ -136,10 +133,9 @@ python evaluate.py
 
 ## Code Structure
 
-- `ragen.py`: Main training and evaluation
+- `ragen.py`: Main training and evaluation script
 - `policy.py`: Policy network for web tasks
 - `webshop.py`: Mock WebShop environment
 - `webarena.py`: Mock WebArena environment
 - `astar_po.py`: A*PO loss computation
-- `evaluate.py`: Evaluation script
 

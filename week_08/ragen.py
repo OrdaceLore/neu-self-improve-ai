@@ -36,6 +36,9 @@ class RAGENWeb:
             states.append(state)
             actions.append(action)
             rewards.append(reward)
+            # Ensure log_prob is a scalar (1D)
+            if log_prob.dim() > 0:
+                log_prob = log_prob.squeeze()
             log_probs.append(log_prob)
             
             if done:
@@ -60,7 +63,15 @@ class RAGENWeb:
         
         log_probs_tensor = torch.stack(log_probs)
         advantages = self.compute_advantages(rewards)
-        advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
+        
+        # Normalize advantages, but handle case where all are the same
+        adv_mean = advantages.mean()
+        adv_std = advantages.std()
+        if adv_std > 1e-6:  # Only normalize if there's variance
+            advantages = (advantages - adv_mean) / adv_std
+        else:
+            # If all advantages are the same, use raw advantages (centered)
+            advantages = advantages - adv_mean
         
         loss = compute_astar_po_loss(log_probs_tensor, advantages)
         self.optimizer.zero_grad()
@@ -99,10 +110,10 @@ def main():
     for i in range(50):
         loss, episode_reward = trainer.train_step()
         if i % 5 == 0:  # Print every 5 steps to reduce output
-            eval_reward, success_rate = trainer.evaluate(n_episodes=5)
+            eval_reward, success_rate = trainer.evaluate(n_episodes=20)  # More episodes for reliable metrics
             print(f"Step {i}: Loss={loss:.4f}, Success Rate={success_rate:.2%}")
     
-    webshop_reward, webshop_success = trainer.evaluate(n_episodes=10)
+    webshop_reward, webshop_success = trainer.evaluate(n_episodes=50)
     print(f"\nWebShop Results:")
     print(f"  Average Reward: {webshop_reward:.2f}")
     print(f"  Success Rate: {webshop_success:.2%}")
@@ -114,19 +125,28 @@ def main():
     for i in range(50):
         loss, episode_reward = trainer.train_step()
         if i % 5 == 0:  # Print every 5 steps to reduce output
-            eval_reward, success_rate = trainer.evaluate(n_episodes=5)
+            eval_reward, success_rate = trainer.evaluate(n_episodes=20)  # More episodes for reliable metrics
             print(f"Step {i}: Loss={loss:.4f}, Success Rate={success_rate:.2%}")
     
-    webarena_reward, webarena_success = trainer.evaluate(n_episodes=10)
+    webarena_reward, webarena_success = trainer.evaluate(n_episodes=50)
     print(f"\nWebArena Results:")
     print(f"  Average Reward: {webarena_reward:.2f}")
     print(f"  Success Rate: {webarena_success:.2%}")
     
+    # Performance Table
+    print("\n=== Performance Summary ===")
+    print(f"{'Task':<15} {'Avg Reward':<15} {'Success Rate':<15} {'Training Steps':<15}")
+    print("-" * 60)
+    print(f"{'WebShop':<15} {webshop_reward:<15.2f} {webshop_success:<15.2%} {50:<15}")
+    print(f"{'WebArena':<15} {webarena_reward:<15.2f} {webarena_success:<15.2%} {50:<15}")
+    
     # Comparison with leaderboard (mock)
     print("\n=== Comparison with Leaderboard ===")
-    print("WebShop Leaderboard (top methods): ~85-95% success rate")
-    print(f"Our RAGEN - WebShop: {webshop_success:.2%} success rate")
-    print(f"Our RAGEN - WebArena: {webarena_success:.2%} success rate")
+    print(f"{'Method':<20} {'WebShop':<15} {'WebArena':<15}")
+    print("-" * 50)
+    print(f"{'Top Method':<20} {'95%':<15} {'92%':<15}")
+    print(f"{'RAGEN (ours)':<20} {webshop_success:<15.1%} {webarena_success:<15.1%}")
+    
     print("\nWhy RAGEN doesn't perform well:")
     print("1. Limited training (50 steps vs 1000+ for leaderboard)")
     print("2. Simplified environment (mock vs real web)")
