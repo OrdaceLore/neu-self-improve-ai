@@ -9,7 +9,7 @@ import time
 # from maas.agents import BaseAgent
 
 def run_maas_experiment():
-    print(">>> Starting MaAS on CommonsenseQA...")
+    print(">>> Starting MaAS on BoolQ (Boolean Questions)...")
     start_time = time.time()
 
     # 1. Configuration

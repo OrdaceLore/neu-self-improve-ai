@@ -1,452 +1,452 @@
 [
   {
-    "id": "1a7f5b3c65364d9be002576660c914fe",
-    "question": "Where do you put your grapes just before checking out?\nOptions:\nA: mouth\nB: grocery cart\nC: super market\nD: fruit basket\nE: fruit market",
+    "id": 10,
+    "question": "Passage: Badgers are short-legged omnivores in the family Mustelidae, which also includes the otters, polecats, weasels, and wolverines. They belong to the caniform suborder of carnivoran mammals. The 11 species of badgers are grouped in three subfamilies: Melinae (Eurasian badgers), Mellivorinae (the honey badger or ratel), and Taxideinae (the American badger). The Asiatic stink badgers of the genus Mydaus were formerly included within Melinae (and thus Mustelidae), but recent genetic evidence indicates these are actually members of the skunk family, placing them in the taxonomic family Mephitidae.\n\nQuestion: is a wolverine the same as a badger\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 101,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 11,
+    "question": "Passage: Green Lantern was released on June 17, 2011, and received generally negative reviews; most criticized the film for its screenplay, inconsistent tone, choice and portrayal of villains, and its use of CGI, while some praised Reynolds' performance. Reynolds would later voice his dissatisfaction with the film. The film underperformed at the box office, grossing $219 million against a production budget of $200 million. Due to the film's negative reception and disappointing box office performance, Warner Bros. canceled any plans for a sequel, instead opting to reboot the character in the DC Extended Universe line with the film Green Lantern Corps, set for release in 2020.\n\nQuestion: will there be a green lantern 2 movie\nOptions:\nA: Yes\nB: No",
     "ground_truth": "B",
     "model_prediction": "B",
     "correct": true,
-    "steps_taken": 25,
+    "steps_taken": 120,
     "agent_graph": "Graph(A->B->C)"
   },
   {
-    "id": "dac769116ed064bc70936c15eb822c3e",
-    "question": "Before getting a divorce, what did the wife feel who was doing all the work?\nOptions:\nA: harder\nB: anguish\nC: bitterness\nD: tears\nE: sadness",
-    "ground_truth": "C",
-    "model_prediction": "C",
-    "correct": true,
-    "steps_taken": 26,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "f5c9664c9930b704f2724fbd617bee9d",
-    "question": "Johnny sat on a bench and relaxed after doing a lot of work on his hobby.  Where is he?\nOptions:\nA: state park\nB: bus depot\nC: garden\nD: gym\nE: rest area",
-    "ground_truth": "C",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 33,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "b63b9809c203321d6659ddf8551894bf",
-    "question": "James was cooling off two quickly.  He would die if he didn't find some way to stop what?\nOptions:\nA: loss of heat\nB: revenge\nC: expansion\nD: relaxation\nE: calm down",
-    "ground_truth": "A",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 32,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "527e72eb38950b8031ee6217ef531960",
-    "question": "Of all the rooms in a house it was his favorite, the aromas always drew him to the what?\nOptions:\nA: yard\nB: basement\nC: kitchen\nD: living room\nE: garden",
-    "ground_truth": "C",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 31,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "e6766a66f8d326bf00fbf628a0e4ef24",
-    "question": "Bill is stuck in marsh when a man comes up to him peaking Cajun, where is he?\nOptions:\nA: low lands\nB: new york\nC: forest\nD: louisiana\nE: everglades",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 30,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "a76403b4921a9281b6ee2a7241a5ec9f",
-    "question": "What is it called when you slowly cook using a grill?\nOptions:\nA: backyard\nB: restaurant\nC: crockpot\nD: neighbor's house\nE: barbeque",
-    "ground_truth": "E",
-    "model_prediction": "E",
-    "correct": true,
-    "steps_taken": 23,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "ad96098698b8378b2e79c6424920ffbd",
-    "question": "What type of person typically contracts illness?\nOptions:\nA: hospital\nB: head\nC: sick person\nD: elderly person\nE: doctor's office",
-    "ground_truth": "D",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 21,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "6d4ed2c485187ed79ff3bdcc8cca6132",
-    "question": "Where would you expect to find a pizzeria while shopping?\nOptions:\nA: chicago\nB: street\nC: little italy\nD: food court\nE: capital cities",
-    "ground_truth": "D",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 24,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "a40f5339ee858a0a119cbac052c5a2d0",
-    "question": "When eating everything on the tasting menu, what does one tend to feel?\nOptions:\nA: full stomach\nB: getting full\nC: gaining weight\nD: sick\nE: satisfaction",
+    "id": 12,
+    "question": "Passage: The United States should have the chance to observe and assess the functioning of the court, over time, before choosing to become subject to its jurisdiction. Given these concerns, I will not, and do not recommend that my successor, submit the treaty to the Senate for advice and consent until our fundamental concerns are satisfied.\n\nQuestion: does the icc has jurisdiction in the united states\nOptions:\nA: Yes\nB: No",
     "ground_truth": "B",
     "model_prediction": "B",
     "correct": true,
-    "steps_taken": 27,
+    "steps_taken": 71,
     "agent_graph": "Graph(A->B->C)"
   },
   {
-    "id": "4850bf8b6b309548ef623d5592ffbca2",
-    "question": "What does playing soccer for a long time lead to?\nOptions:\nA: excitement\nB: fatigue\nC: anger\nD: hurting\nE: getting tired",
-    "ground_truth": "E",
-    "model_prediction": "E",
-    "correct": true,
-    "steps_taken": 22,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "e6d99b4b76f74961a400ad0001b13b73",
-    "question": "Which entrance would you use if you do not want to use the back entrance?\nOptions:\nA: side\nB: main\nC: anterior\nD: current\nE: front",
-    "ground_truth": "B",
-    "model_prediction": "B",
-    "correct": true,
-    "steps_taken": 26,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "f5950a62f9eaae34f1e914b3cf5208cf",
-    "question": "You can share files with someone if you have a connection to a what?\nOptions:\nA: freeway\nB: radio\nC: wires\nD: computer network\nE: electrical circuit",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 27,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "f36489668c28b26c0cdbc56cec1db27b",
-    "question": "The accelerator was controller via a hand throttle, and the foot pedals controlled the steering in the small what?\nOptions:\nA: car\nB: fuel system\nC: accelerate\nD: boat\nE: airplane",
-    "ground_truth": "E",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 31,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "0476192858e7f541611b5c2d3c5e5197",
-    "question": "Sean was lying about the body, but he was very scared.  He constantly worried about what?\nOptions:\nA: the reward money\nB: hurt feelings\nC: being found out\nD: problems\nE: trouble",
-    "ground_truth": "C",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 32,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "df7861813910ae204c3bd0b3c16fe5d9",
-    "question": "The drug kingpin told his man to run errands, this was code to go to all the dealers to do what they had?\nOptions:\nA: park\nB: make time for\nC: receive instructions\nD: take money\nE: leave work",
-    "ground_truth": "D",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 39,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "c12a904025471139df4f8860cc380c60",
-    "question": "Though he could've kept going his body appreciated the rest, it had been constantly what during the day?\nOptions:\nA: walk\nB: lay down\nC: working\nD: moving\nE: exercise",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 30,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "a69bd1bf3c06a233d696a00d71a9db36",
-    "question": "Too many people want exotic snakes.  The demand is driving what to carry them?\nOptions:\nA: ditch\nB: shop\nC: north america\nD: pet shops\nE: outdoors",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 27,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "84e983f432647531b55b8b72c12fb78a",
-    "question": "Joe suffered many consequences from stabbing a stranger to death.   Among them, the family of the victim did something to him. What was that?\nOptions:\nA: knife wounds\nB: buy a gun\nC: bleeding\nD: jail time\nE: law suit",
-    "ground_truth": "E",
-    "model_prediction": "E",
-    "correct": true,
-    "steps_taken": 40,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "68f123f22be7bff13875e8b752b2d933",
-    "question": "To prevent any glare during the big football game he made sure to clean the dust of his what?\nOptions:\nA: television\nB: attic\nC: corner\nD: they cannot clean corner and library during football match they cannot need that\nE: ground",
-    "ground_truth": "A",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 42,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "c9580b132b323906f0d51e7dc5b4ce29",
-    "question": "I have something in my head I want to share, what ways can I do that?\nOptions:\nA: write an essay\nB: organize thoughts\nC: speak information\nD: summarize main points\nE: have information",
-    "ground_truth": "C",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 34,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "80930e9df9ac4ad752749a54e7fc124f",
-    "question": "He wanted a house that was gated off from other places, where should he start looking?\nOptions:\nA: neighborhood\nB: subdivision\nC: city\nD: suburbs\nE: street",
-    "ground_truth": "B",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 27,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "f080ab037c1aaf689a43cc030e9d93e9",
-    "question": "Where in Southern Europe would you find many canals?\nOptions:\nA: michigan\nB: new york\nC: amsterdam\nD: venice\nE: bridge",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 21,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "a261d4eaf8b33c0730d830ebbffbd9f8",
-    "question": "What would a camper need to do before he or she can start cooking food?\nOptions:\nA: make breakfast\nB: go hiking\nC: pack or bag\nD: light fire\nE: grab a match",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 33,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "bfd14dedb440ae1c266c61aa22960778",
-    "question": "What could happen to a paper if you leave it outside even if it does not move?\nOptions:\nA: one material often recycled\nB: ripped\nC: saturated with water\nD: one dimensional\nE: crumpled",
-    "ground_truth": "C",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 34,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "5a953b5fb26f1614640574f65410e8b0",
-    "question": "Mark's semen was very thick, but after his vasectomy it was also what?\nOptions:\nA: blank\nB: sparse\nC: thin\nD: clear\nE: free flowing",
-    "ground_truth": "D",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 25,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "ac0351d8649fb60af40c5638061a2e21",
-    "question": "What is a great place to lay in the sun?\nOptions:\nA: in the basement\nB: west\nC: solar system\nD: beach\nE: beans",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 24,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "c8b18acf8e95172ff79b0a837e9369f3",
-    "question": "Where would you find a seafood restaurant in the east coast of North America?\nOptions:\nA: maine\nB: boston\nC: beach town\nD: coastal cities\nE: ocean",
+    "id": 13,
+    "question": "Passage: Calcium carbide is a chemical compound with the chemical formula of CaC. Its main use industrially is in the production of acetylene and calcium cyanamide.\n\nQuestion: calcium carbide cac2 is the raw material for the production of acetylene\nOptions:\nA: Yes\nB: No",
     "ground_truth": "A",
     "model_prediction": "A",
     "correct": true,
-    "steps_taken": 27,
+    "steps_taken": 44,
     "agent_graph": "Graph(A->B->C)"
   },
   {
-    "id": "7a7ff4499a7162265ddac0c3e2e8e5fc",
-    "question": "The president is the leader of what institution?\nOptions:\nA: walmart\nB: white house\nC: country\nD: corporation\nE: government",
-    "ground_truth": "E",
+    "id": 14,
+    "question": "Passage: Now You See Me is a series of heist thriller film written by Ed Solomon, Boaz Yakin, and Edward Ricourt. They focus on the actions of a team of illusionists named ``The Four Horsemen'' who pull off near impossible heists. The series features an ensemble cast including Jesse Eisenberg, Mark Ruffalo, Woody Harrelson, Isla Fisher, Dave Franco, Michael Caine, Lizzy Caplan, and Morgan Freeman. The first film was released in 2013, while the second was released in 2016, and a third film is currently in development and set to be released in 2019. The series has received mixed reviews from critics and audiences and grossed nearly $700 million worldwide.\n\nQuestion: is there a now you see me 3 coming out\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
     "model_prediction": "X",
     "correct": false,
-    "steps_taken": 20,
+    "steps_taken": 126,
     "agent_graph": "Graph(A)"
   },
   {
-    "id": "fb721d7949d06915a2dd6fc6ec815325",
-    "question": "Sitting to close while watching TV can cause what sort of pain?\nOptions:\nA: brain problems\nB: laziness\nC: get fat\nD: headache\nE: laughter",
-    "ground_truth": "D",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 25,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "47db2878d917ceb8d82627de4722a254",
-    "question": "Where is a bald eagle safe?\nOptions:\nA: pine tree\nB: open country\nC: in washington\nD: wildlife refuge\nE: sky",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 21,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "f03a340e093dbd5eea88feb6507ed20e",
-    "question": "The game promised it was free, but the child's parents soon found themselves doing what for microtransactions?\nOptions:\nA: costly\nB: captive\nC: contained\nD: paying\nE: caught",
-    "ground_truth": "D",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 28,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "5f6296570569960a05c47a2a79656363",
-    "question": "What kind of driving leads to accidents?\nOptions:\nA: stressful\nB: dangerous\nC: fun\nD: illegal\nE: deadly",
-    "ground_truth": "B",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 18,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "89586c4ab04f3133a2c7165322409c3d",
-    "question": "What is eating too much dinner likely to result in?\nOptions:\nA: tiredness\nB: living longer\nC: stomach ache\nD: illness\nE: acid reflux",
-    "ground_truth": "C",
-    "model_prediction": "C",
-    "correct": true,
-    "steps_taken": 24,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "98b176ac1c91370e079863d13c7dd964",
-    "question": "What is a person chatting with friends likely hoping to accomplish?\nOptions:\nA: gathering of information\nB: communication\nC: feel relaxed\nD: kill boredom\nE: social bonding",
-    "ground_truth": "E",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 27,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "b13d110147ecf24562b64a69df4fe5ad",
-    "question": "Jame's bare feet were burned as he walked, because the sunshine had made the surface hot.  Where might he have been?\nOptions:\nA: disneyland\nB: snow\nC: windowsill\nD: street\nE: summer",
-    "ground_truth": "D",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 32,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "145f1ccce9aeab854f6514f927f58288",
-    "question": "A fox was thirsty searching for water during the drought, where was he?\nOptions:\nA: painting\nB: hen house\nC: california\nD: virginia\nE: movie hall",
-    "ground_truth": "C",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 26,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "c428412a660f34965772a7389ce58e0a",
-    "question": "What might be the result of a season of successful skiing?\nOptions:\nA: finish line\nB: broken bones\nC: broken legs\nD: chapped lips\nE: healthy body",
-    "ground_truth": "E",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 27,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "80f8afc17b5b5915a327240db8bc2a52",
-    "question": "The sensor would just the distance then set off an alarm, the installation expert explained it was called a what kind of sensor?\nOptions:\nA: near\nB: closeness\nC: here\nD: proximity\nE: this",
-    "ground_truth": "D",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 34,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "a662c9971a497d601c5be888670d10ae",
-    "question": "The man was eating lunch, but rushed when he looked at his watch, why did he rush?\nOptions:\nA: gain weight\nB: late for work\nC: heartburn\nD: bad breath\nE: early for work",
+    "id": 15,
+    "question": "Passage: A shoot-out is usually considered for statistical purposes to be separate from the match which preceded it. In the case of a two-legged fixture, the two matches are still considered either as two draws or as one win and one loss; in the case of a single match, it is still considered as a draw. This contrasts with a fixture won in extra time, where the score at the end of normal time is superseded. Converted shoot-out penalties are not considered as goals scored by a player for the purposes of their individual records, or for ``golden boot'' competitions.\n\nQuestion: does a penalty shoot out goal count towards the golden boot\nOptions:\nA: Yes\nB: No",
     "ground_truth": "B",
     "model_prediction": "B",
     "correct": true,
-    "steps_taken": 34,
+    "steps_taken": 117,
     "agent_graph": "Graph(A->B->C)"
   },
   {
-    "id": "8bf8c8597dfc5e8ec72b486541338e33",
-    "question": "The evacuation became mandatory, so what came on the TV?\nOptions:\nA: advisory\nB: mandate\nC: soap opera\nD: elective\nE: optional",
+    "id": 16,
+    "question": "Passage: Cutthroat Kitchen is a cooking show hosted by Alton Brown that aired on the Food Network from August 11, 2013 to July 19, 2017. It features four chefs competing in a three-round elimination cooking competition. The contestants face auctions in which they can purchase opportunities to sabotage one another. Each chef is given $25,000 at the start of the show; the person left standing keeps whatever money they have not spent in the auctions. The show ended on its fifteenth season in July 2017. The series shares some basic elements with other four-chef, three-round elimination-style competitions on Food Network including Chopped and Guy's Grocery Games. Numerous Cutthroat Kitchen contestants have competed on these shows.\n\nQuestion: will there be a new season of cutthroat kitchen\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 130,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 17,
+    "question": "Passage: In 2006, Sikma was voted as one of the 100 Legends of the IHSA Boys Basketball Tournament, a group of former players and coaches in honor of the 100 anniversary of the IHSA boys basketball tournament. On June 27, 2017, Sikma was inducted into the Small College Basketball Hall of Fame as part of their second class . Inducted alongside Sikma were Zelmo Beaty, Walt Frazier, Bob Love, Elmore Smith, Jim Spivey, Rico Swanson, George Tinsley, and Al Tucker.\n\nQuestion: is jack sikma in the hall of fame\nOptions:\nA: Yes\nB: No",
     "ground_truth": "A",
     "model_prediction": "A",
     "correct": true,
-    "steps_taken": 22,
+    "steps_taken": 94,
     "agent_graph": "Graph(A->B->C)"
   },
   {
-    "id": "313b72ce5b14f3d0b86b91c7bc6497be",
-    "question": "The person gave a good hands on what to show how to do the work?\nOptions:\nA: demonstration\nB: garage\nC: building\nD: barn\nE: synagogue",
+    "id": 18,
+    "question": "Passage: In J.R.R. Tolkien's fictional universe of Middle-earth, the Half-elven (Sindarin singular Peredhel, plural Peredhil, Quenya singular Perelda) are the children of the union of Elves and Men. Of these, the most significant were the products of couplings between the Eldar (the Elves who followed the Call to Valinor) and the Edain (the Men of the Three Houses of early Men who allied themselves with the Eldar in their war against Morgoth).\n\nQuestion: can elves and humans mate lord of the rings\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 87,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 19,
+    "question": "Passage: The Boy in the Plastic Bubble is a 1976 American made-for-television drama film inspired by the lives of David Vetter and Ted DeVita, who lacked effective immune systems. It stars John Travolta, Glynnis O'Connor, Diana Hyland, Robert Reed, Ralph Bellamy & P.J. Soles. It was written by Douglas Day Stewart, executive produced by Aaron Spelling and Leonard Goldberg (who, at the time, produced Starsky and Hutch and Charlie's Angels), and directed by Randal Kleiser, who would work with Travolta again in Grease shortly after. The original music score was composed by Mark Snow. The theme song ``What Would They Say'' was written and sung by Paul Williams. William Howard Taft High School in Woodland Hills was used for filming.\n\nQuestion: the boy in the plastic bubble based on true story\nOptions:\nA: Yes\nB: No",
     "ground_truth": "A",
     "model_prediction": "X",
     "correct": false,
-    "steps_taken": 26,
+    "steps_taken": 136,
     "agent_graph": "Graph(A)"
   },
   {
-    "id": "6efbe0725841b961848b6935fe67a471",
-    "question": "Where would you see some people doing jumping jacks?\nOptions:\nA: military base\nB: opera\nC: water fountain\nD: bus stop\nE: church",
+    "id": 20,
+    "question": "Passage: These terms are used with respect to reasoning (epistemology) to distinguish ``necessary conclusions from first premises'' (i.e., what must come before sense observation) from ``conclusions based on sense observation'' (which must follow it). Thus, the two kinds of knowledge, justification, or argument, may be glossed:\n\nQuestion: science begins with the premise that knowledge should first be acquired through observation\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 65,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 21,
+    "question": "Passage: Timothy Donell Brown (born July 22, 1966) is a former American football wide receiver who played professionally in the National Football League (NFL). He played college football for Notre Dame, where he won the Heisman Trophy, becoming the first wide receiver to win the award. He spent sixteen years with the Los Angeles/Oakland Raiders, during which he established himself as one of the NFL's most prolific wide receivers. Brown has also played for the Tampa Bay Buccaneers. In 2015, he was inducted into the Pro Football Hall of Fame.\n\nQuestion: is tim brown in the hall of fame\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 104,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 22,
+    "question": "Passage: Drinking in public in Denmark is legal in general. The law forbids ``disturbing of the public law and order''. Thus general consumption is accepted. Several cafes have outdoor serving in the same zones.\n\nQuestion: can you drink alcohol in public in denmark\nOptions:\nA: Yes\nB: No",
     "ground_truth": "A",
     "model_prediction": "X",
     "correct": false,
-    "steps_taken": 23,
+    "steps_taken": 48,
     "agent_graph": "Graph(A)"
   },
   {
-    "id": "4163cfdd31feb277084ceb3996b3a851",
-    "question": "The body guard was good at his duties, he made the person who hired him what?\nOptions:\nA: better job\nB: irritated\nC: feel safe\nD: save money\nE: headache",
-    "ground_truth": "C",
-    "model_prediction": "C",
-    "correct": true,
-    "steps_taken": 30,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "3f720c9ad7f3eb99400dd8c81fc269d8",
-    "question": "Learning languages is difficult.  Even in a full immersion environment you're likely to make mistakes, mistakes will cause misinterpretation, which will be uncomfortable, which will cause what?,\nOptions:\nA: better communication\nB: overthinking\nC: frustration\nD: misunderstandings\nE: headaches",
-    "ground_truth": "C",
-    "model_prediction": "C",
-    "correct": true,
-    "steps_taken": 39,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "4dbeeb50a01a3b5c9c76d1052c4b14ea",
-    "question": "Jim enjoyed killing people, but he did it too often and the cops found out.  What might the cops do to him?\nOptions:\nA: going to jail\nB: going to prison\nC: beat him up\nD: get arrested\nE: die",
-    "ground_truth": "D",
-    "model_prediction": "D",
-    "correct": true,
-    "steps_taken": 40,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "129014ff081296c3d9bbc338c5ff32db",
-    "question": "Where is there usually a fiddle playing?\nOptions:\nA: music store\nB: dance hall\nC: orchestra\nD: symphony\nE: tennessee",
-    "ground_truth": "C",
-    "model_prediction": "C",
-    "correct": true,
-    "steps_taken": 20,
-    "agent_graph": "Graph(A->B->C)"
-  },
-  {
-    "id": "8f495e9bcd88ce23617197520442090c",
-    "question": "What is the only was to recover from exhaustion?\nOptions:\nA: mediate\nB: have rest\nC: stay in bed\nD: run out of steam\nE: go to sleep",
+    "id": 23,
+    "question": "Passage: Both Jersey and Bank of England notes are legal tender in Jersey and circulate together, alongside the Guernsey pound and Scottish banknotes. The Jersey notes are not legal tender in the United Kingdom but are legal currency, so creditors and traders may accept them if they so choose.\n\nQuestion: is jersey currency legal tender in the uk\nOptions:\nA: Yes\nB: No",
     "ground_truth": "B",
     "model_prediction": "X",
     "correct": false,
-    "steps_taken": 28,
+    "steps_taken": 63,
     "agent_graph": "Graph(A)"
   },
   {
-    "id": "6dc921840aa1e5dda3333b79007f630b",
-    "question": "What would you do if you want to be able to earn money?\nOptions:\nA: apply for job\nB: stand in line\nC: take care of proposals\nD: pass course\nE: play the lottery",
-    "ground_truth": "A",
-    "model_prediction": "X",
-    "correct": false,
-    "steps_taken": 34,
-    "agent_graph": "Graph(A)"
-  },
-  {
-    "id": "c879e1677869c4d58102c608da805453",
-    "question": "What is a grumpy person likely to have?\nOptions:\nA: headache\nB: understand themselves\nC: compliments\nD: own house\nE: happiness",
+    "id": 24,
+    "question": "Passage: The Bucks have won one league title (1971), two conference titles (1971 and 1974), and 13 division titles (1971--1974, 1976, 1980--1986, 2001). They have featured such notable players as Kareem Abdul-Jabbar, Sidney Moncrief, Oscar Robertson, Bob Dandridge, Bob Lanier, Glenn Robinson, Ray Allen, Sam Cassell, Junior Bridgeman, Michael Redd, Terry Cummings, Vin Baker, Jon McGlocklin, Marques Johnson, and Brian Winters.\n\nQuestion: have the milwaukee bucks ever won a championship\nOptions:\nA: Yes\nB: No",
     "ground_truth": "A",
     "model_prediction": "A",
     "correct": true,
-    "steps_taken": 21,
+    "steps_taken": 75,
     "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 25,
+    "question": "Passage: This is a list of all penalty shoot-outs that have occurred in the Finals tournament of the FIFA World Cup. Penalty shoot-outs were introduced as tie-breakers in the 1978 World Cup but did not occur before 1982. The first time a World Cup title was won by penalty shoot-out was in 1994. The only other time was in 2006. By the end of the 2018 edition, 30 shoot-outs have taken place in the World Cup. Of these, only two reached the sudden death stage after still being tied at the end of ``best of five kicks''.\n\nQuestion: does the world cup final go to penalties\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 111,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 26,
+    "question": "Passage: Kingdom (\u30ad\u30f3\u30b0\u30c0\u30e0, Kingudamu) is a Japanese manga series written and illustrated by Yasuhisa Hara (\u539f\u6cf0\u4e45, Hara Yasuhisa). The manga provides a fictionalized account of the Warring States period primarily through the experiences of the war orphan Xin and his comrades as he fights to become the greatest general under the heavens, and in doing so, unifying China for the first time in history. The series was adapted into a thirty-eight episode anime series by studio Pierrot that aired from June 4, 2012 to February 25, 2013. A second season was announced and aired from June 8, 2013 to March 1, 2014. An English language release of the anime was licensed by Funimation.\n\nQuestion: is kingdom manga based on a true story\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 127,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 27,
+    "question": "Passage: As of 2014 the contracting parties to the EEA are 3 of the 4 EFTA member states and 27 of the 28 EU member states. The 28th and newest EU member, Croatia, finished negotiating their accession to the EEA in November 2013, and since 12 April 2014 is provisionally applying the agreement pending its ratification by all EEA member states.\n\nQuestion: is croatia part of the european economic area\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 75,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 28,
+    "question": "Passage: Posthumous marriage (or necrogamy) is a marriage in which one of the participating members is deceased. It is legal in France and similar forms are practiced in Sudan and China. Since World War I, France has had hundreds of requests each year, of which many have been accepted.\n\nQuestion: can u marry a dead person in france\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 63,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 29,
+    "question": "Passage: Saline, also known as saline solution, is a mixture of sodium chloride in water and has a number of uses in medicine. Applied to the affected area it is used to clean wounds, help remove contact lenses, and help with dry eyes. By injection into a vein it is used to treat dehydration such as from gastroenteritis and diabetic ketoacidosis. It is also used to dilute other medications to be given by injection.\n\nQuestion: is saline and sodium chloride the same thing\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 88,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 30,
+    "question": "Passage: Several classes of antibiotics are effective in treating bubonic plague. These include aminoglycosides such as streptomycin and gentamicin, tetracyclines (especially doxycycline), and the fluoroquinolone ciprofloxacin. Mortality associated with treated cases of bubonic plague is about 1--15%, compared to a mortality of 40--60% in untreated cases.\n\nQuestion: is there a treatment for the bubonic plague\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 60,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 31,
+    "question": "Passage: The premise of the series is that Buffy is the latest Slayer, a young woman endowed by mystical forces with superhuman powers to fight and defeat vampires, demons, and other evil forces in the fictional town of Sunnydale. Like every Slayer before her, she was chosen and informed of her destiny when she was 15 years old. Her mother is unaware of her daughter's powers and responsibilities until Buffy is forced to tell her at the end of the second season of the television series. Although Joyce is shocked at this revelation, she recovers quickly and remains a source of stability for Buffy and Buffy's small circle of friends who assist her, dubbed the Scooby Gang. Eventually Joyce is able to take Buffy's dangerous demon-fighting in stride and even become proud and respectful of her daughter's abilities. Her natural death from an illness in the fifth season forces Buffy to face becoming an adult.\n\nQuestion: does buffy's mom know she's a slayer\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 168,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 32,
+    "question": "Passage: The tower's tilt began during construction in the 12th century, caused by an inadequate foundation on ground too soft on one side to properly support the structure's weight. The tilt increased in the decades before the structure was completed in the 14th century. It gradually increased until the structure was stabilized (and the tilt partially corrected) by efforts in the late 20th and early 21st centuries.\n\nQuestion: was the leaning tower of pisa built leaning\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 81,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 33,
+    "question": "Passage: Fool's Gold is a 2008 American adventure-romance film from Warner Bros. Pictures about a recently divorced couple who rekindle their romantic life while searching for a lost treasure. The film was directed by Andy Tennant and reunites the How to Lose a Guy in 10 Days stars Matthew McConaughey and Kate Hudson.\n\nQuestion: is the movie fool's gold a true story\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 67,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 34,
+    "question": "Passage: The home field curse affects the host team of the Super Bowl. So far no team has yet managed to reach the Super Bowl in their home stadium. Four teams with Super Bowls in their home venue have qualified for the divisional playoffs: the 1994 Miami Dolphins, the 1998 Miami Dolphins, the 2016 Houston Texans, and the 2017 Minnesota Vikings, the Vikings being the first to qualify for their conference's title game. From 1966--2011 (excluding the six Super Bowl games held in a stadium without a professional team), the Super Bowl host team has had 11 winning seasons, four split seasons, and 25 losing seasons. Mathematically, the probability of that many losing seasons or more occurring by chance (assuming a 50 percent chance of having a losing season (disregarding .500 seasons)) is 7.69 percent. It should be noted, however, that the Super Bowl host stadium is selected several years before the game is played, without regard to the teams that qualify.\n\nQuestion: has any nfl team played the superbowl at home\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 177,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 35,
+    "question": "Passage: In Australia, each state has its own constitution. Each state constitution preceded the Constitution of Australia as constitutions of the then separate British colonies, but all the states ceded powers to the Parliament of Australia as part of federation in 1901.\n\nQuestion: does each australian state have its own constitution\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 56,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 36,
+    "question": "Passage: A bundle branch block can be diagnosed when the duration of the QRS complex on the ECG exceeds 120 ms. A right bundle branch block typically causes prolongation of the last part of the QRS complex, and may shift the heart's electrical axis slightly to the right. The ECG will show a terminal R wave in lead V1 and a slurred S wave in lead I. Left bundle branch block widens the entire QRS, and in most cases shifts the heart's electrical axis to the left. The ECG will show a QS or rS complex in lead V1 and a monophasic R wave in lead I. Another normal finding with bundle branch block is appropriate T wave discordance. In other words, the T wave will be deflected opposite the terminal deflection of the QRS complex. Bundle branch block, especially left bundle branch block, can lead to cardiac dyssynchrony. The simultaneous occurrence of left and right bundle branch block leads to total AV block.\n\nQuestion: can you have a right and left bundle branch block\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 180,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 37,
+    "question": "Passage: In informal games, it is customary to announce ``check'' when making a move that puts the opponent's king in check. In formal competitions, however, check is rarely announced.\n\nQuestion: do you always have to say check in chess\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 44,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 38,
+    "question": "Passage: The Texas Heeler is a cross between the Australian Cattle Dog and the Australian Shepherd that was first registered with the Animal Research Foundation (ARF) in 1970. The ARF has registered Australian Cattle Dogs without papers as ``Australian Cattledog Queensland Heelers'' since 1965 and was the first organisation to recognise the Australian Shepherd. Although originally bred for its ability to work cattle, the Texas Heeler is increasingly used as a pet and a companion in dog sports. As with most cross breeds, the Texas Heeler's size and appearance is a variable combination of the parent breeds.\n\nQuestion: is an australian shepherd the same as an australian cattle dog\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 114,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 39,
+    "question": "Passage: Tomato pur\u00e9e is a thick liquid made by cooking and straining tomatoes. The difference between tomato paste, tomato pur\u00e9e, and tomato sauce is consistency; tomato puree has a thicker consistency and a deeper flavour than sauce.\n\nQuestion: is tomato puree and tomato sauce the same thing\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 52,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 40,
+    "question": "Passage: The Blues Brothers are an American blues and soul revivalist band which was founded in 1978 by comedy actors Dan Aykroyd and John Belushi as part of a musical sketch on Saturday Night Live. Belushi and Aykroyd fronted the band, respectively in character as lead vocalist ``Joliet'' Jake Blues and harmonica player/vocalist Elwood Blues. The band was composed of well-known and respected musicians, and debuted as the musical guest on the April 22, 1978, episode of Saturday Night Live, opening the show performing ``Hey Bartender'', and later ``Soul Man''.\n\nQuestion: is the blues brothers based on a true story\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 105,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 41,
+    "question": "Passage: Newcastle upon Tyne (locally /nju\u02d0\u02c8k\u00e6s\u0259l/ ( listen)), commonly known as Newcastle, is a city in Tyne and Wear, North East England, 103 miles (166 km) south of Edinburgh and 277 miles (446 km) north of London on the northern bank of the River Tyne, 8.5 mi (13.7 km) from the North Sea. Newcastle is the most populous city in the North East, and forms the core of the Tyneside conurbation, the eighth most populous urban area in the United Kingdom. Newcastle is a member of the English Core Cities Group and is a member of the Eurocities network of European cities.\n\nQuestion: is newcastle upon tyne the same as newcastle\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 116,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 42,
+    "question": "Passage: The Post Office provides information on services and accepts postal items and payment on behalf of the two collection and delivery divisions of Royal Mail Group, Royal Mail and Parcelforce. These include a variety of ordinary and guaranteed services both for delivery within the United Kingdom and to international destinations. Postage stamps (including commemorative stamps and other philatelic items) are sold, while applications for redirection of mail are accepted on behalf of Royal Mail.\n\nQuestion: is post office and royal mail the same\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 89,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 43,
+    "question": "Passage: Justices are nominated by the president and then confirmed by the U.S. Senate. A nomination to the Court is considered to be official when the Senate receives a signed nomination letter from the president naming the nominee, which is then entered in the Senate's record. There have been 37 unsuccessful nominations to the Supreme Court of the United States. Of these, 11 nominees were rejected in Senate roll-call votes, 11 were withdrawn by the president, and 15 lapsed at the end of a session of Congress. Six of these unsuccessful nominees were subsequently nominated and confirmed to other seats on the Court. Additionally, although confirmed, seven nominees either declined office or (in one instance) died before assuming office.\n\nQuestion: has any supreme court nominee not been confirmed\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 133,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 44,
+    "question": "Passage: Thanksgiving, or Thanksgiving Day, is a public holiday celebrated on the fourth Thursday of November in the United States. It originated as a harvest festival. Thanksgiving has been celebrated nationally on and off since 1789, after Congress requested a proclamation by George Washington. It has been celebrated as a federal holiday every year since 1863, when, during the American Civil War, President Abraham Lincoln proclaimed a national day of ``Thanksgiving and Praise to our beneficent Father who dwelleth in the Heavens,'' to be celebrated on the last Thursday in November. Together with Christmas and the New Year, Thanksgiving is a part of the broader fall/winter holiday season in the U.S.\n\nQuestion: is thanksgiving always the last thursday of the month\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 126,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 45,
+    "question": "Passage: The Lord of the Rings is an epic high fantasy novel written by English author and scholar J.R.R. Tolkien. The story began as a sequel to Tolkien's 1937 fantasy novel The Hobbit, but eventually developed into a much larger work. Written in stages between 1937 and 1949, The Lord of the Rings is one of the best-selling novels ever written, with over 150 million copies sold.\n\nQuestion: is lord of the rings after the hobbit\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 81,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 46,
+    "question": "Passage: In December 2014, it was announced that Torment, the second installment in the Fallen book series, was in development. It is unknown whether the last two novels, Passion and Rapture, and the spin-off novel, Unforgiven, will be adapted as well. In 2017, producer Kevan Van Thompson asked the fans if they want an adaptation of ``Torment'', showing that the sequel still could be made.\n\nQuestion: is the fallen movie going to have a sequel\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 80,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 47,
+    "question": "Passage: This list contains the top 50 accounts with the most followers on the social photo-sharing platform Instagram. As of October 2018, the most followed user is Instagram's own account, with over 260 million followers. Cristiano Ronaldo is the most followed individual, with over 144 million followers. Twelve accounts have exceeded 100 million followers on the site.\n\nQuestion: does anyone on instagram have 1 billion followers\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 71,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 48,
+    "question": "Passage: George Lucas, Rick McCallum, and casting director Robin Gurland auditioned over 200 actresses for the part of Padm\u00e9 Amidala. They chose 16-year-old actress Natalie Portman to play the role. According to The Phantom Menace production notes, ``The role required a young woman who could be believable as the ruler of that planet, but at the same time be vulnerable and open.'' Portman's performances in The Professional (1994) and Beautiful Girls (1996) impressed Lucas. He stated, ``I was looking for someone who was young, strong, along the lines of Leia. Natalie embodied all those traits and more.''\n\nQuestion: in the phantom menace is padme the queen\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 111,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 49,
+    "question": "Passage: The Lord of the Rings is an epic high fantasy novel written by English author and scholar J.R.R. Tolkien. The story began as a sequel to Tolkien's 1937 fantasy novel The Hobbit, but eventually developed into a much larger work. Written in stages between 1937 and 1949, The Lord of the Rings is one of the best-selling novels ever written, with over 150 million copies sold.\n\nQuestion: is lord of the rings considered an epic\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 81,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 50,
+    "question": "Passage: The euro sign (\u20ac) is the currency sign used for the euro, the official currency of the Eurozone in the European Union (EU). The design was presented to the public by the European Commission on 12 December 1996. The international three-letter code (according to ISO standard ISO 4217) for the euro is EUR. In Unicode it is encoded at U+20AC \u20ac euro sign (HTML &#8364; &euro; ). In English, the sign precedes the value (for instance, \u20ac10, not 10 \u20ac, unlike most other European languages). In some style guides, but not others, the euro sign is unspaced.\n\nQuestion: does the euro sign go before the number\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 112,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 51,
+    "question": "Passage: For nearly all models of induction cooktops, a cooking vessel must be made of, or contain, a ferrous metal such as cast iron or some stainless steels. The iron in the pot concentrates the current to produce heat in the metal. If the metal is too thin, or does not provide enough resistance to current flow, heating will not be effective. Most induction tops will not heat copper or aluminum vessels because the magnetic field cannot produce a concentrated current; ``all metal'' induction tops use much higher frequencies to overcome that effect. Any vessel can be used if placed on a suitable metal disk which functions as a conventional hotplate.\n\nQuestion: can stainless steel be used on induction cooktop\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 125,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 52,
+    "question": "Passage: ``Firing'' is a common colloquial term in the English language (particularly used in the U.S.) for termination. The term ``firing'' may have been initiated in the 1910s at the National Cash Register Company. Other terms for dismissal are being ``sacked'', ``canned'', ``let go'', ``ran-off'', ``axed'', ``given walking papers'', ``given the pink slip'' or ``boned''. Other terms, more often used in Commonwealth countries, include ``to get the boot'' and ``to get the sack''.\n\nQuestion: is job termination the same as being fired\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 87,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 53,
+    "question": "Passage: In a 2015 study, Cary Stothart, Walter Boot, and Daniel Simons attempted to replicate and extend the findings from both Graham and Burke's 2011 study and Steven Most and colleague's 2000 study on Amazon Mechanical Turk using a sample of 515 participants that varied in age. In this study, participants were tasked with counting the number of times a number of white moving objects crossed the vertical midpoint of a display while ignoring a number of black moving objects. The unexpected object in this case was a gray cross that moved horizontally across the display at various distances from the vertical midpoint (this was manipulated between participants). Overall, they found that inattentional blindness susceptibility increases with age, which replicates the finding from Graham and Burke. In fact, they found that every 10 years of age was associated with a 1.3 fold increase in the probability of displaying inattentional blindness. They also found that the probability of inattentional blindness increases as the distance between the observer's focus of attention and the unexpected object increases, which replicates the finding from Most and colleagues. However, they also found that the relationship that age has with inattentional blindness does not change as a function of the unexpected object's distance from the focus of attention, suggesting that useful field of view does not mediate the relationship between age and inattentional blindness.\n\nQuestion: does age have any influence on attentional ability or inattentional blindness\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 244,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 54,
+    "question": "Passage: Sanskrit belongs to the Indo-European family of languages. It is one of the three ancient documented languages that likely arose from a common root language now referred to as the Proto-Indo-European language:\n\nQuestion: is sanskrit the first language of the world\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 47,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 55,
+    "question": "Passage: The Jack Russell Terrier is a small terrier that has its origins in fox hunting. It is principally white-bodied and smooth, rough or broken-coated but can be any colour.\n\nQuestion: is a jack russell considered a small breed\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "A",
+    "correct": true,
+    "steps_taken": 44,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 56,
+    "question": "Passage: The Air Force usually does not have fighter aircraft escort the presidential aircraft over the United States but it has occurred, for example during the attack on the World Trade Center.\n\nQuestion: does air force one travel with fighter escort\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 46,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 57,
+    "question": "Passage: The Roberti-Roos Assault Weapons Control Act of 1989 banned Colt AR-15 rifles by name in the State of California. California's 2000 Assault Weapons ban went further and banned AR-15s made by other manufacturers by name such as Bushmaster, PWA, and Olympic Arms.\n\nQuestion: is it legal to own an ar15 in california\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "B",
+    "model_prediction": "B",
+    "correct": true,
+    "steps_taken": 58,
+    "agent_graph": "Graph(A->B->C)"
+  },
+  {
+    "id": 58,
+    "question": "Passage: ``The Star-Spangled Banner'' is the national anthem of the United States. The lyrics come from ``Defence of Fort M'Henry'', a poem written on September 14, 1814, by the then 35-year-old lawyer and amateur poet Francis Scott Key after witnessing the bombardment of Fort McHenry by British ships of the Royal Navy in Baltimore Harbor during the Battle of Baltimore in the War of 1812. Key was inspired by the large U.S. flag, with 15 stars and 15 stripes, known as the Star-Spangled Banner, flying triumphantly above the fort during the U.S. victory.\n\nQuestion: is the national anthem and star spangled banner the same\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 109,
+    "agent_graph": "Graph(A)"
+  },
+  {
+    "id": 59,
+    "question": "Passage: Naples International Airport (IATA: NAP, ICAO: LIRN) (Italian: Aeroporto Internazionale di Napoli) is the international airport serving Naples, Italy. It is located 3.2 NM (5.9 km; 3.7 mi) north-northeast of the city in the Capodichino district of Naples. The airport has two terminal buildings: Terminal 1 is for scheduled flights and Terminal 2, located away from the airfield, is used for charter operations.\n\nQuestion: is there an international airport in naples italy\nOptions:\nA: Yes\nB: No",
+    "ground_truth": "A",
+    "model_prediction": "X",
+    "correct": false,
+    "steps_taken": 78,
+    "agent_graph": "Graph(A)"
   }
 ]

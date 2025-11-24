@@ -1,36 +1,30 @@
 import json
 from datasets import load_dataset
-import random
 
-# 1. Load CommonsenseQA (Standard Leaderboard Benchmark)
+# 1. Load BoolQ (Boolean Questions) - Standard Leaderboard Benchmark
 # We use a small subset to satisfy the "3 min training" constraint
-print("Loading CommonsenseQA dataset...")
-dataset = load_dataset("commonsense_qa", split="train")
+# BoolQ tests reading comprehension with yes/no questions
+print("Loading BoolQ dataset...")
+dataset = load_dataset("boolq", split="train")
 
 # 2. Format for MaAS
 # MaAS typically expects: { "question": str, "answer": str }
 formatted_data = []
 
 for item in dataset:
-    # Convert letter answer (A,B,C,D,E) to the actual text for easier agent verification
-    choices = item['choices']
-    answer_key = item['answerKey']
+    # BoolQ has a question, passage, and answer (True/False)
+    question = item['question']
+    passage = item['passage']
+    answer = item['answer']  # True or False
     
-    # Find the text corresponding to the answer key
-    answer_text = ""
-    options_text = []
-    for label, text in zip(choices['label'], choices['text']):
-        formatted_str = f"{label}: {text}"
-        options_text.append(formatted_str)
-        if label == answer_key:
-            answer_text = text
-
-    full_question = f"{item['question']}\nOptions:\n" + "\n".join(options_text)
+    # Format as multiple choice with passage context
+    full_question = f"Passage: {passage}\n\nQuestion: {question}\nOptions:\nA: Yes\nB: No"
+    answer_key = "A" if answer else "B"
     
     formatted_data.append({
-        "id": item['id'],
+        "id": item.get('idx', len(formatted_data)),  # Use idx if available, otherwise index
         "question": full_question,
-        "ground_truth": answer_key, # Keeping the letter as the strict truth
+        "ground_truth": answer_key, # A or B
         "metadata": {"difficulty": "unknown"} # Placeholder
     })
 
