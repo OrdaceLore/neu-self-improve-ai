@@ -22,7 +22,7 @@ This is a **proper RAGEN implementation** (not TinyZero) that:
 ## Running
 
 ```bash
-cd improved/week_06
+cd week_06
 python ragen.py
 ```
 
